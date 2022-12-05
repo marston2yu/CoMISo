@@ -301,7 +301,7 @@ void quadratic_example_2()
 int main(void)
 {
 
-//  quadratic_example_1();
+  quadratic_example_1();
 
   quadratic_example_2();
 

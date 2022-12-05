@@ -47,7 +47,11 @@ ILOSTLBEGIN
 #endif
 
 #if COMISO_SUITESPARSE_AVAILABLE
-#include "CholmodSolver.hh"
+  #if USE_EIGEN_CHOLMOD
+  #include "EigenCholmodSolver.hh"
+  #elif
+  #include "CholmodSolver.hh"
+  #endif
 #elif COMISO_EIGEN3_AVAILABLE
 #include "EigenLDLTSolver.hh"
 #else
@@ -109,7 +113,11 @@ private:
 // base class selected based on the available packages
 class MISolver::DirectSolver : public
 #if COMISO_SUITESPARSE_AVAILABLE
-                               CholmodSolver
+  #if USE_EIGEN_CHOLMOD
+                                 EigenCholmodSolver
+  #elif
+                                 CholmodSolver
+  #endif
 #elif COMISO_EIGEN3_AVAILABLE
                                EigenLDLTSolver
 #else
