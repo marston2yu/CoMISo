@@ -70,22 +70,19 @@ if( WIN32 )
 
 else( WIN32 )
   if( APPLE)
-    FIND_PATH( CHOLMOD_INCLUDE_DIR cholmod.h
-      PATHS  /opt/local/include/ufsparse )
-   
-    FIND_LIBRARY(SUITESPARSE_LIBRARY
-      NAMES libSuiteSparse.dylib
-      PATHS /opt/local/lib)
-    message("SUITESPARSE_LIBRARY: ${SUITESPARSE_LIBRARY}")
+    FIND_PATH( CHOLMOD_INCLUDE_DIR
+                NAMES cholmod.h
+                HINTS ${SUITESPARSE_DIR}
+                PATH_SUFFIXES  include )
+
 
     FIND_PATH( SUITESPARSE_LIBRARY_DIR
-      NAMES libSuiteSparse.dylib
-      PATHS /opt/local/lib )
+                NAMES cholmod
+                HINTS ${SUITESPARSE_DIR}
+                PATH_SUFFIXES lib )
 
     message("SUITESPARSE_LIBRARY_DIR: ${SUITESPARSE_LIBRARY_DIR}")
     list ( APPEND SUITESPARSE_LIBRARY_DIRS ${SUITESPARSE_LIBRARY_DIR} )
-
-    list ( APPEND SUITESPARSE_LIBRARIES ${SUITESPARSE_LIBRARY})
 
   else(APPLE)
     FIND_PATH( CHOLMOD_INCLUDE_DIR cholmod.h

@@ -15,7 +15,7 @@ include (VCICommon)
 include(VCIQt)
 
 # Flag to enable or disable QT widgets in CoMISo
-set( WANT_COMISO_QT ON CACHE BOOL "Enable Qt support in CoMISo" )
+set( WANT_COMISO_QT OFF CACHE BOOL "Enable Qt support in CoMISo" )
 
 # Flag to enable or disable IPOPT
 set( ENABLE_IPOPT ON CACHE BOOL "Build with IPOPT (if found)" )
