@@ -77,7 +77,7 @@ else( WIN32 )
 
 
     FIND_PATH( SUITESPARSE_LIBRARY_DIR
-                NAMES cholmod
+                NAMES libcholmod.dylib
                 HINTS ${SUITESPARSE_DIR}
                 PATH_SUFFIXES lib )
 
